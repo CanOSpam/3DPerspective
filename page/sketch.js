@@ -8,8 +8,8 @@ var lines = [];
 
 function preload() 
 {
-	pointTable = loadTable('https://gist.githubusercontent.com/CanOSpam/27ff9648c32527a455ca406175dd7a2e/raw/eaf08231c6c237f0a181fa6cd45272602c5c78b6/points.csv', 'csv', 'header');
-	lineTable = loadTable('https://gist.githubusercontent.com/willamm/16cd11f53941bc92f8827ec87c81bb52/raw/d8cd76ba9332d9abda93006e4c8b32e82af21897/lines.csv', 'csv', 'header')
+	pointTable = loadTable('https://raw.githubusercontent.com/CanOSpam/3DPerspective/master/assets/points.csv', 'csv', 'header');
+	lineTable = loadTable('https://raw.githubusercontent.com/CanOSpam/3DPerspective/master/assets/lines.csv', 'csv', 'header')
 }
 
 function setup() 

@@ -27,11 +27,11 @@ function setup()
 	console.log(rightPoints);
 	console.log(lines);
 
-	strokeWeight(1);
-
-	var modifier = 300;
-
-	translate(width/2, -height/2);
+	strokeWeight(0.25);
+	
+	scale(4, 4);
+	translate(width/8, -height/1.15);
+	
 
 	stroke(255, 0, 0);
 	lines.forEach(
@@ -45,7 +45,7 @@ function setup()
 		}
 	);
 
-	stroke(0, 0, 255);
+	stroke(0, 255, 255);
 	lines.forEach(
 		function(el)
 		{
@@ -56,6 +56,8 @@ function setup()
 			line(fromU, height - fromV, toU, height - toV);
 		}
 	);
+
+	
 
 	// leftPoints.forEach(function(el)
 	// {

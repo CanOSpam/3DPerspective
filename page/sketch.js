@@ -14,24 +14,26 @@ function preload()
 
 function setup() 
 {
-	var height = window.innerHeight;
-	var width = window.innerWidth;
-	createCanvas(window.innerWidth, window.innerHeight);
-	var rows = pointTable.getRows();
-	getPoints();
-	getLines();
+	var height = 1080;
+	var width = 1920;
+	var screenHeight = 2989;
+	var screenWidth = 5313;
+
+	createCanvas(width, height);
 	fill(0, 0, 0);
 	rect(0, 0, width, height);
-	//warning: rows is an array of objects
+	
+	getPoints();
+	getLines();
+	
+
 	console.log(leftPoints);
 	console.log(rightPoints);
 	console.log(lines);
 
-	strokeWeight(0.25);
-	
-	scale(4, 4);
-	translate(width/8, -height/1.15);
-	
+	strokeWeight(1);
+	translate(width/2, height/2);
+	scale(screenWidth/width, -(screenHeight/height));
 
 	stroke(255, 0, 0);
 	lines.forEach(
@@ -41,7 +43,7 @@ function setup()
 			fromV = parseFloat(leftPoints[el.from].v);
 			toU = parseFloat(leftPoints[el.to].u);
 			toV = parseFloat(leftPoints[el.to].v);
-			line(fromU, height - fromV, toU, height - toV);
+			line(fromU, fromV, toU, toV);
 		}
 	);
 
@@ -53,36 +55,9 @@ function setup()
 			fromV = parseFloat(rightPoints[el.from].v);
 			toU = parseFloat(rightPoints[el.to].u);
 			toV = parseFloat(rightPoints[el.to].v);
-			line(fromU, height - fromV, toU, height - toV);
+			line(fromU, fromV, toU, toV);
 		}
 	);
-
-	
-
-	// leftPoints.forEach(function(el)
-	// {
-	// 	stroke(255, 0, 0);
-	// 	var u = parseFloat(el.u) + 100;
-	// 	var v = parseFloat(el.v) + 100;
-	// 	console.log("Right u: " + u + " v: " + v);
-	// 	point(u, v);
-	// });
-	
-	// rightPoints.forEach(function(el)
-	// {
-	// 	stroke(0, 0, 255);
-	// 	var u = parseFloat(el.u) + 100;
-	// 	var v = parseFloat(el.v) + 100;
-	// 	console.log("Right u: " + u + " v: " + v);
-	// 	point(u, v);
-	// });
-    
-
-}
-
-function draw() 
-{
-
 
 }
 

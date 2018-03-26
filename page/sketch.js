@@ -8,30 +8,32 @@ var lines = [];
 
 function preload() 
 {
-	pointTable = loadTable('https://gist.githubusercontent.com/CanOSpam/27ff9648c32527a455ca406175dd7a2e/raw/eaf08231c6c237f0a181fa6cd45272602c5c78b6/points.csv', 'csv', 'header');
-	lineTable = loadTable('https://gist.githubusercontent.com/CanOSpam/36add70b3254d9f35d278b74c76ad9b9/raw/e9909688408ea8945230909041f05c67a55e2a95/lines.csv', 'csv', 'header')
+	pointTable = loadTable('https://raw.githubusercontent.com/CanOSpam/3DPerspective/master/assets/points.csv', 'csv', 'header');
+	lineTable = loadTable('https://raw.githubusercontent.com/CanOSpam/3DPerspective/master/assets/lines.csv', 'csv', 'header')
 }
 
 function setup() 
 {
-	var height = window.innerHeight;
-	var width = window.innerWidth;
-	createCanvas(window.innerWidth, window.innerHeight);
-	var rows = pointTable.getRows();
-	getPoints();
-	getLines();
+	var height = 1080;
+	var width = 1920;
+	var screenHeight = 2989;
+	var screenWidth = 5313;
+
+	createCanvas(width, height);
 	fill(0, 0, 0);
 	rect(0, 0, width, height);
-	//warning: rows is an array of objects
+	
+	getPoints();
+	getLines();
+	
+
 	console.log(leftPoints);
 	console.log(rightPoints);
 	console.log(lines);
 
 	strokeWeight(1);
-
-	var modifier = 300;
-
-	translate(width/2, -height/2);
+	translate(width/2, height/2);
+	scale(screenWidth/width, -(screenHeight/height));
 
 	stroke(255, 0, 0);
 	lines.forEach(
@@ -41,11 +43,11 @@ function setup()
 			fromV = parseFloat(leftPoints[el.from].v);
 			toU = parseFloat(leftPoints[el.to].u);
 			toV = parseFloat(leftPoints[el.to].v);
-			line(fromU, height - fromV, toU, height - toV);
+			line(fromU, fromV, toU, toV);
 		}
 	);
 
-	stroke(0, 0, 255);
+	stroke(0, 255, 255);
 	lines.forEach(
 		function(el)
 		{
@@ -53,34 +55,9 @@ function setup()
 			fromV = parseFloat(rightPoints[el.from].v);
 			toU = parseFloat(rightPoints[el.to].u);
 			toV = parseFloat(rightPoints[el.to].v);
-			line(fromU, height - fromV, toU, height - toV);
+			line(fromU, fromV, toU, toV);
 		}
 	);
-
-	// leftPoints.forEach(function(el)
-	// {
-	// 	stroke(255, 0, 0);
-	// 	var u = parseFloat(el.u) + 100;
-	// 	var v = parseFloat(el.v) + 100;
-	// 	console.log("Right u: " + u + " v: " + v);
-	// 	point(u, v);
-	// });
-	
-	// rightPoints.forEach(function(el)
-	// {
-	// 	stroke(0, 0, 255);
-	// 	var u = parseFloat(el.u) + 100;
-	// 	var v = parseFloat(el.v) + 100;
-	// 	console.log("Right u: " + u + " v: " + v);
-	// 	point(u, v);
-	// });
-    
-
-}
-
-function draw() 
-{
-
 
 }
 
